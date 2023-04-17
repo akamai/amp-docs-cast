@@ -1,0 +1,3 @@
+* xref:amp-core:index.adoc[]
+* xref:amp-core:migration.adoc[]
+* xref:amp-core:advanced.adoc[]

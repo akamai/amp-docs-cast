@@ -1,0 +1,64 @@
+include::amp-web-sdk:ROOT:partial$amp-gobal-attributes.adoc[]
+
+= Overview
+
+AMP CAST is a new library to create Chromecast Receivers using AMP’s core alongside Google’s Cast Application Framework (CAF).
+
+This tutorial shows how to create a custom CAF Receiver using AMP CAST.
+
+This tutorial shows:
+
+1. Getting AMP CAST.
+2. Creating a basic HTML.
+3. Including the Cast Receiver framework.
+4. Including AMP CAST in your receiver.
+5. Creating a Config Object.
+6. Creating an AmpCaf instance.
+7. Customizing the Receiver UI.
+8. Using CafAds to serve client-side Ads.
+9. Hosting your Custom Receiver
+
+== 1. Getting AMP CAST
+
+The customer's premium license includes AMP CAST. To obtain a self-hosted package, reach https://ampsupport.atlassian.net/servicedesk/customer/portal/6[AMP Support].
+
+== 2. Creating a basic HTML
+
+Create a basic HTML page.
+
+== 3. Including the Cast Receiver framework
+
+Load the Cast Receiver Framework using a `script` tag in your `head` section and include the `cast-media-player` tag in the body of the HTML page.
+
+== 4. Including AMP CAST in your receiver
+
+Add AMP CAST to your basic HTML page using a `script` tag in your `head` section with `src`.
+
+[source,html]
+----
+https://amp-a.akamaihd.net/hosted/1.1/cast.esi?apikey=API-KEY&version=1.0.0
+----
+
+== 5. Creating a Config Object
+
+As with regular AMP, AMP CAST uses a `{@link akamai.amp.PlayerConfig}` object. So, declare a `const` for the `config` object and add any required configuration.
+
+== 6. Creating an AMP CAST instance
+
+TCall the AMP constructor to create an AMP CAST instance, passing the `config` object and an event listener function as arguments.
+
+== 7. Customizing the Receiver UI
+
+To customize the receiver UI, include a `style` tag at the end of the page `body` and add any desired `css`. For further information on UI styling, please refer to https://developers.google.com/cast/docs/web_receiver/customize_ui[google's documentation].
+
+== 8. Using CafAds to serve client-side Ads.
+
+Include a `cafads` section in the `config` object to serve client-side ads. The `cafads` section should specify the `provider` of the ads and the `vmapAdsRequest.`
+
+== 9. Hosting your Custom Receiver
+
+The customer can host the custom receiver anywhere. To link your custom receiver to a sender application, login into your https://developers.google.com/cast[Google Cast SDK Developer Console] and follow the `Add New Application` wizard.
+
+:date: 20/2/2023
+:last-revision: 20/3/2023
+include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]

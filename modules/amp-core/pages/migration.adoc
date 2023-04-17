@@ -1,0 +1,43 @@
+include::amp-web-sdk:ROOT:partial$amp-gobal-attributes.adoc[]
+
+= Migrating from AMP CAF Receiver to AMP Cast SDK
+
+In the past, AMP's Premiere license provided a simple CAF Receiver for customers to customize and improve based on their needs. After listening to our customers, we decided to further standardize our Chromecast Receiver solution to enhance our customer's experience.
+
+This guide shows how to migrate from the older version of AMP's CAF Receiver to AMP Cast SDK.
+
+== Receiver Design
+
+=== Old AMP CAF Receiver
+
+The old AMP CAF Receiver was distributed as a zip package and included the following folders and files:
+
+=== New AMP Cast Receiver
+
+The new AMP Cast allows the creation of a CAF receiver in a single file. Review the overview tutorial for a more detailed explanation of how to create a new receiver using AMP Cast. The following example shows the main parts of a Receiver:
+
+== Migrating from the Old AMP CAF Receiver to AMP Cast SDK-based receiver
+
+=== 1. Single file receiver
+
+We advise you to migrate your receiver to a single HTML file. To do so, we recommend starting with a simple receiver like the previous example. Then:
+
+* From the `AmpCafReceiverConfig.js` file, copy all your configuration into the sample Config Block.
+* From the `AmpCafReceiverStyles.css` file, copy all your css and paste it into the style block of the sample.
+* Copy your `chromecast-bg.png` if required.
+
+=== 2. External config and style files
+
+If you desire to maintain your `AmpCafReceiverConfig.js` and `AmpCafReceiverStyles.css` files separated from your main HTML you still can:
+
+* Reference your `AmpCafReceiverConfig.js` by importing it inside a module as previously implemented in the old AmpCaf receiver:
+
+* Reference your `AmpCafReceiverStyles.css` by importing it as a regular CSS file.
+
+== Migrating custom code in your receiver
+
+If, for some reason, you have a custom code in your receiver, you can still copy it a moving it to your new receiver. However, accessing Google's CAF library directly is not advised. If your custom code is accessing the CAF Framework directly, you'll need to rewrite it to use AMP Cast standardized API to ensure your code doesn't conflict with AMP Cast.
+
+:date: 20/2/2023
+:last-revision: 20/3/2023
+include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]

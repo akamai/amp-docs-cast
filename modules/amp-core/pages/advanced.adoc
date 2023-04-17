@@ -1,0 +1,104 @@
+= Advanced features
+
+This tutorial will help customers to use advanced features by using AMP CAST player API
+
+This tutorial shows:
+1. Player properties and methods
+2. Player event targeting.
+3. Player Transforms.
+
+== 1. Player properties and methods
+
+The Player offers public properties and methods accessible through a valid cast instance.
+
+[source,javascript]
+----
+amp.currentTime // Playback currentTime in seconds.
+> 234
+amp.currentTime = 1
+amp.currentTime
+> 1
+
+amp.getSystemVolume() // method to access current cast device volume
+----
+
+== 2. Player events targeting
+
+You can subscribe to any runtime player events when using AMP Cast Receiver.
+
+Anonymous function
+
+[source,javascript]
+----
+amp = new akamai.amp.cast.AMP(config, event => {
+    console.log("AMP CAST READY")
+})
+----
+
+Function callback
+
+[source,javascript]
+----
+amp = new akamai.amp.cast.AMP(config, onready)
+
+function onready(event) {
+    console.log("AMP CAST READY")
+}
+----
+
+Subscribing other player events
+
+[source,javascript]
+----
+amp.addEventListener('canplaythrough', event => {
+    // do something...
+})
+----
+
+Alternatively, the Player can subscribe to one specific event at once, and then it can be removed.
+
+[source,javascript]
+----
+amp.once('seeking', event => {
+    // do something once
+})
+----
+
+Finally, If you need to unsubscribe for an event, you can use `removeEventListener,` which only works for subscribed events using a callback function.
+
+[source,javascript]
+----
+amp.removeEventListener('play', onplay)
+----
+
+== 3. Transform API
+
+The player default behavior can be modified in runtime synchronously using the available transform types.
+
+For instance, to skip ad breaks Player, you can use the following transform.
+
+[source,javascript]
+----
+amp.addTransform(akamai.amp.TransformType.AD_BREAK, adbreak => {
+     adbreak.ignore = true // will order player to ignore the given ad clip
+
+     return adbreak
+})
+----
+
+Sometimes a transform callback must be called before another transform with the same type.
+
+For instance, if you need to validate the credentials for a given video using a third-party service, then you can use `akamai.amp.TransformType.LOAD_REQUEST_DATA`, which will sort the interceptors for `cast.framework.messages.MessageType.LOAD.`
+
+[source,javascript]
+----
+amp.addTransform(akamai.amp.TransformType.LOAD_REQUEST_DATA, {
+      transform: async loadRequestData => {
+        const asset = await fetchAsset(loadRequestData.credentials)
+        if (asset == null) return Error('')
+
+        return loadRequestData
+      }
+      priority: 101 // the higher this number is the higher the priority will be
+    }
+----

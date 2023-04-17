@@ -1,0 +1,7 @@
+= Get Started
+
+image::cast.png[align="center"]
+
+== Cast
+
+Akamai Media Player provides a turnkey media playback experience for online media consumption in whether a web page or cast device. This document provides an overview for how to install, configure, and deploy a cast receiver using Akamai Cast.
