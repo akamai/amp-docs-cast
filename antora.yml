@@ -1,6 +1,6 @@
 name: amp-cast-sdk
 title: AMP Cast SDK
-version: 1.0.3
+version: 1.0.2
 start_page: getting-started.adoc
 asciidoc:
   attributes:
