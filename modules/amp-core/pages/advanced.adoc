@@ -3,6 +3,7 @@
 This tutorial will help customers to use advanced features by using AMP CAST player API
 
 This tutorial shows:
+
 1. Player properties and methods
 2. Player event targeting.
 3. Player Transforms.
