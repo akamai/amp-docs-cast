@@ -20,7 +20,7 @@ This tutorial shows:
 
 == 1. Getting AMP CAST
 
-The customer's premium license includes AMP CAST. To obtain a self-hosted package, reach https://ampsupport.atlassian.net/servicedesk/customer/portal/6[AMP Support].
+The customer's premier license includes AMP CAST. To obtain a self-hosted package, reach https://player.akamai.com/support/[AMP Support].
 
 == 2. Creating a basic HTML
 
@@ -41,11 +41,11 @@ https://amp-a.akamaihd.net/hosted/1.1/cast.esi?apikey=API-KEY&version=1.0.0
 
 == 5. Creating a Config Object
 
-As with regular AMP, AMP CAST uses a `{@link akamai.amp.PlayerConfig}` object. So, declare a `const` for the `config` object and add any required configuration.
+As with regular AMP, AMP CAST uses a `https://docs.player.akamai.com/static/amp-web-sdk/akamai.amp.PlayerConfig.html[akamai.amp.PlayerConfig]` object. So, declare a `const` for the `config` object and add any required configuration.
 
 == 6. Creating an AMP CAST instance
 
-TCall the AMP constructor to create an AMP CAST instance, passing the `config` object and an event listener function as arguments.
+Call the AMP constructor to create an AMP Cast instance, passing the config object and an event listener function as arguments.
 
 == 7. Customizing the Receiver UI
 

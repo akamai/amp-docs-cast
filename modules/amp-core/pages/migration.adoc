@@ -18,7 +18,25 @@ The new AMP Cast allows the creation of a CAF receiver in a single file. Review 
 
 == Migrating from the Old AMP CAF Receiver to AMP Cast SDK-based receiver
 
-=== 1. Single file receiver
+=== 1. Including AMP cast bundle in your web receiver.
+
+In older versions, customers needed to host and import the `AmpCafReceiver.js` bundle in their receiver web application.
+
+[source, javascript]
+----
+import AMP from "../akamai/amp/chromecast/libs/AmpCafReceiver.js"
+----
+
+When using the AMP Cast receiver, you can simplify file imports by using the CDN version. This can be done by adding a script tag in the head section of your basic HTML page.
+
+[source,html]
+----
+https://amp-a.akamaihd.net/hosted/1.1/cast.esi?apikey=API-KEY&version=1.0.0
+----
+
+NOTE: Submit a ticket at https://player.akamai.com/support/[AMP Support] to obtain an API key for the CDN version of the AMP Cast web receiver.
+
+=== 2. Single file receiver
 
 We advise you to migrate your receiver to a single HTML file. To do so, we recommend starting with a simple receiver like the previous example. Then:
 
@@ -26,7 +44,7 @@ We advise you to migrate your receiver to a single HTML file. To do so, we recom
 * From the `AmpCafReceiverStyles.css` file, copy all your css and paste it into the style block of the sample.
 * Copy your `chromecast-bg.png` if required.
 
-=== 2. External config and style files
+=== 3. External config and style files
 
 If you desire to maintain your `AmpCafReceiverConfig.js` and `AmpCafReceiverStyles.css` files separated from your main HTML you still can:
 
@@ -36,8 +54,8 @@ If you desire to maintain your `AmpCafReceiverConfig.js` and `AmpCafReceiverStyl
 
 == Migrating custom code in your receiver
 
-If, for some reason, you have a custom code in your receiver, you can still copy it a moving it to your new receiver. However, accessing Google's CAF library directly is not advised. If your custom code is accessing the CAF Framework directly, you'll need to rewrite it to use AMP Cast standardized API to ensure your code doesn't conflict with AMP Cast.
+If, for some reason, you have custom code in your receiver, you can still copy and move it to your new receiver. However, accessing Google's CAF library directly is not advised. If your custom code accesses the CAF Framework directly, you'll need to rewrite it to use the AMP Cast standardized API to ensure your code doesn't conflict with AMP Cast.
 
 :date: 20/2/2023
-:last-revision: 20/3/2023
+:last-revision: 28/06/2024
 include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]
