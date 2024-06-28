@@ -103,3 +103,7 @@ amp.addTransform(akamai.amp.TransformType.LOAD_REQUEST_DATA, {
       priority: 101 // the higher this number is the higher the priority will be
     }
 ----
+
+:date: 28/06/2024
+:last-revision: 28/06/2024
+include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]
