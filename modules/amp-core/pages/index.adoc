@@ -45,7 +45,7 @@ As with regular AMP, AMP CAST uses a `{@link akamai.amp.PlayerConfig}` object. S
 
 == 6. Creating an AMP CAST instance
 
-TCall the AMP constructor to create an AMP CAST instance, passing the `config` object and an event listener function as arguments.
+Call the AMP constructor to create an AMP Cast instance, passing the config object and an event listener function as arguments.
 
 == 7. Customizing the Receiver UI
 
