@@ -20,7 +20,7 @@ This tutorial shows:
 
 == 1. Getting AMP CAST
 
-The customer's premium license includes AMP CAST. To obtain a self-hosted package, reach https://ampsupport.atlassian.net/servicedesk/customer/portal/6[AMP Support].
+The customer's premier license includes AMP CAST. To obtain a self-hosted package, reach https://ampsupport.atlassian.net/servicedesk/customer/portal/6[AMP Support].
 
 == 2. Creating a basic HTML
 
