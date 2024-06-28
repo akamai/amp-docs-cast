@@ -41,7 +41,7 @@ https://amp-a.akamaihd.net/hosted/1.1/cast.esi?apikey=API-KEY&version=1.0.0
 
 == 5. Creating a Config Object
 
-As with regular AMP, AMP CAST uses a `{@link akamai.amp.PlayerConfig}` object. So, declare a `const` for the `config` object and add any required configuration.
+As with regular AMP, AMP CAST uses a `https://docs.player.akamai.com/static/amp-web-sdk/akamai.amp.PlayerConfig.html[akamai.amp.PlayerConfig]` object. So, declare a `const` for the `config` object and add any required configuration.
 
 == 6. Creating an AMP CAST instance
 
