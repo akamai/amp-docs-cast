@@ -39,5 +39,5 @@ If you desire to maintain your `AmpCafReceiverConfig.js` and `AmpCafReceiverStyl
 If, for some reason, you have custom code in your receiver, you can still copy and move it to your new receiver. However, accessing Google's CAF library directly is not advised. If your custom code accesses the CAF Framework directly, you'll need to rewrite it to use the AMP Cast standardized API to ensure your code doesn't conflict with AMP Cast.
 
 :date: 20/2/2023
-:last-revision: 20/3/2023
+:last-revision: 28/06/2024
 include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]
