@@ -4,7 +4,7 @@ This tutorial will help customers to use advanced features by using AMP CAST pla
 
 This tutorial shows:
 
-1. Player properties and methods
+1. Player properties and methods.
 2. Player event targeting.
 3. Player Transforms.
 
@@ -104,6 +104,77 @@ amp.addTransform(akamai.amp.TransformType.LOAD_REQUEST_DATA, {
     }
 ----
 
+== 4. Enabling CORS access-control
+
+The AMP Cast Receiver allows for advanced configuration of network requests to support various authentication and data privacy needs. 
+
+One such configuration is the ability to include the `withCredentials` property for XMLHttpRequest objects used in both manifest and segment requests. This can be crucial for accessing resources that require credentials, such as cookies, HTTP authentication, client-side SSL certificates, or CORS.
+
+=== 4.a Set withCredentials via sender custom data.
+The `withCredentials` property can be enabled through the `MediaInformation` object by specifying it in the `customData` object. 
+This method allows for granular control at the media item level, enabling or disabling withCredentials for individual media items based on specific needs.
+
+[source, javascript]
+----
+// Enable withCredentials via customData
+mediaInfo.customData = {
+    withCredentials: true
+};
+----
+
+=== 4.b Using AMP Cast Receiver Config Property
+Alternatively, the `withCredentials` property can be set globally for all manifest and segment requests through the AMP Cast Receiver configuration. This is ideal for applications where all media items require credentials.
+
+[source,javascript]
+----
+const config = {
+        debug: true,
+        plugins: {},
+        withCredentials: true
+}
+        
+amp = new akamai.amp.cast.AMP(config, (event) => {
+          console.log("AMP Cast READY")
+})
+----
+
+=== 4.c Using AMP transform API
+
+To modify playback request attributes, you can use the `akamai.amp.cast.TransformType.PLAYBACK_CONFIG` transform callback. This allows setting CORS access control via cookies or authorization headers.
+
+[source, javascript]
+----
+amp.addTransform(akamai.amp.cast.TransformType.PLAYBACK_CONFIG, (playbackConfigData) => {
+    const { loadRequest, playbackConfig } = playbackConfigData
+    const requestHandler = (requestInfo) => {
+          requestInfo.withCredentials = true
+    }
+    
+    // enables cookies for CORS Access-Control manifest and segment requests
+    playbackConfig.segmentRequestHandler = requestHandler
+    playbackConfig.manifestRequestHandler = requestHandler
+
+    return { loadRequest, playbackConfig }
+})
+----
+
+== 5. Custom HTTP Request Headers
+The AMP Cast receiver is a powerful provides the flexibility to modify request headers for various media components, including manifests, segments, and DRM license data. This capability is essential for customizing content delivery and ensuring compatibility with different streaming protocols and security requirements. See https://developers.google.com/cast/docs/reference/web_receiver/cast.framework.PlaybackConfig[Cast Playback Config options].
+
+[source, javascript]
+----
+amp.addTransform(akamai.amp.cast.TransformType.PLAYBACK_CONFIG, (playbackConfigData) => {
+    const { loadRequest, playbackConfig } = playbackConfigData
+    
+    playbackConfig.segmentRequestHandler = (requestInfo) => {
+          requestInfo.headers['CMCD-Session'] = "1234"
+    }
+    
+    return { loadRequest, playbackConfig }
+})
+----
+
+
 :date: 28/06/2024
-:last-revision: 28/06/2024
+:last-revision: 15/07/2024
 include::amp-web-sdk:ROOT:partial$amp-additional-info.adoc[]
